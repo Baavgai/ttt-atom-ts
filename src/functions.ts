@@ -11,12 +11,10 @@ const lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8],
 
 export const initBoard = () => Array(BOARD_SIZE).fill(EmptyCell) as Board;
 
-export const boardTurn = (b: Board) =>
-  b.filter(x => x !== EmptyCell).length;
+export const boardTurn = (b: Board) => b.filter(x => x !== EmptyCell).length;
 
 export const currentPlayer = (b: Board): Player =>
-  boardTurn(b) % 2 === 0 ? "X" : "O"
-
+  boardTurn(b) % 2 === 0 ? "X" : "O";
 
 export const getWinner = (board: Board): Cell => {
   const check = (p: Player) =>
@@ -36,9 +34,10 @@ export const gameStatus = (b: Board): GameStatus => {
 };
 
 export const makeMove = (b: Board, pos: number): Board => {
-  if (!gameStatus(b) && b[pos] === EmptyCell) {
-    return b.map((x, i) => i === pos ? currentPlayer(b) : x) as Board;
+  // console.log("makemove", b, pos);
+  if (!gameStatus(b).done && b[pos] === EmptyCell) {
+    return b.map((x, i) => (i === pos ? currentPlayer(b) : x)) as Board;
   } else {
     return b;
   }
-}
+};
