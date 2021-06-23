@@ -1,7 +1,7 @@
 import { atom } from "jotai";
 import { Board, Pos, EmptyBoard } from "./types";
 
-import { gameStatus, makeMove } from "./functions";
+import { gameStatus, makeMove, getBestMove } from "./functions";
 
 export const boardAtom = atom(EmptyBoard);
 
@@ -13,7 +13,17 @@ export const statusAtom = atom(get => gameStatus(get(boardAtom)));
 
 export const selectCellAtom = atom<Board, Pos>(
   get => get(boardAtom),
-  (get, set, pos) => set(boardAtom, makeMove(get(boardAtom), pos))
+  (get, set, pos) => {
+    const [moved, nextBoard] = makeMove(get(boardAtom), pos);
+    if (moved) {
+      set(boardAtom, nextBoard);
+      const move = getBestMove(get(boardAtom));
+      if (move !== undefined) {
+        const [, aiBoard] = makeMove(get(boardAtom), move);
+        set(boardAtom, aiBoard);
+      }
+    }
+  }
 );
 
 /*
