@@ -1,28 +1,20 @@
-import { atom, useAtom } from "jotai";
-import {
-  BOARD_SIZE,
-  Board,
-  EmptyCell,
-  Cell,
-  Player
-} from "./types";
+import { atom } from "jotai";
+import { Board, Pos, EmptyBoard } from "./types";
 
-import { initBoard, gameStatus, makeMove } from "./functions";
+import { gameStatus, makeMove } from "./functions";
 
-export const boardAtom = atom(initBoard());
+export const boardAtom = atom(EmptyBoard);
 
-export const resetBoardAtom = atom<unknown, Board>(undefined, (_, set) =>
-  set(boardAtom, initBoard())
+export const resetBoardAtom = atom<unknown, unknown>(undefined, (_, set) =>
+  set(boardAtom, EmptyBoard)
 );
 
 export const statusAtom = atom(get => gameStatus(get(boardAtom)));
 
-
-export const selectCellAtom = atom<Board, number>(
+export const selectCellAtom = atom<Board, Pos>(
   get => get(boardAtom),
   (get, set, pos) => set(boardAtom, makeMove(get(boardAtom), pos))
 );
-
 
 /*
 export const statusAtom = atom(get => {
