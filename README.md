@@ -1,2 +1,3 @@
 # ttt-atom-ts
-Created with CodeSandbox
+
+Simple with Parcel.

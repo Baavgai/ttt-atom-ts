@@ -1,0 +1,53 @@
+$bg-color: #018;
+$line-color: #fff;
+$fg-color: #3c0;
+$cell-default-size: 100px;
+$cell-default-font-size: 80px;
+
+$default-font-size: 30px;
+
+$cols: 3;
+
+%margin-shared {
+    margin: 10px auto;
+}
+
+// #11213a;
+
+body {
+    background-color: $bg-color;
+    color: $fg-color;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    text-align: center;
+    background-color: $bg-color;
+    color: $fg-color;
+}
+
+.title {
+    @extend %margin-shared;
+    font-size: $default-font-size;
+}
+
+.board {
+    @extend %margin-shared;
+    display: grid;
+    grid-template-columns: repeat($cols, auto);
+    width: $cell-default-size * $cols;
+}
+
+.cell {
+    width: $cell-default-size;
+    height: $cell-default-size;
+    line-height: $cell-default-size;
+    font-size: $cell-default-font-size;
+    border: 2px solid $line-color;
+    cursor: pointer;
+}
+
+.status {
+    @extend %margin-shared;
+    font-size: $default-font-size;
+}

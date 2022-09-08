@@ -1,0 +1,11 @@
+{
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.renderWhitespace": "boundary",
+    "typescript.referencesCodeLens.enabled": true,
+    "editor.guides.indentation": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+}

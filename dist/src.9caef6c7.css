@@ -1,0 +1,40 @@
+.status, .board, .title {
+  margin: 10px auto;
+}
+
+body {
+  background-color: #018;
+  color: #3c0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  text-align: center;
+  background-color: #018;
+  color: #3c0;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 300px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  font-size: 80px;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+.status {
+  font-size: 30px;
+}
+
+/*# sourceMappingURL=/src.9caef6c7.css.map */
